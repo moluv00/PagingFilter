@@ -1,0 +1,242 @@
+<html>
+<head>
+<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js' type='text/javascript'></script>
+<script type="text/javascript" src="jquery.pagingfilter.js"></script>
+<script>
+
+/* -------------------------------------------*/
+$(document).ready(function(){
+    //$("#performances").pagingFilter();     
+
+	$("#performances").pagingFilter();                       
+});
+
+$('.genre a').live('click', function(e) {
+	e.preventDefault();
+	genre = $(this).attr('href');
+	$('#performances').pagingFilter.setPagingFilter($('#performances'),1,genre);
+});
+
+/* -------------------------------------------*/
+$(document).ready(function(){
+	$("#performances2").pagingFilter({
+		itemsPerPage : 10,
+		filterName : '',
+		duration : 5000,
+		parentHeight : 200
+	});                       
+});
+
+$('.genre2 a').live('click', function(e) {
+	e.preventDefault();
+	genre = $(this).attr('href');
+	$('#performances2').pagingFilter.setPagingFilter($('#performances2'),1,genre);
+});
+
+/* -------------------------------------------*/
+$(document).ready(function(){
+	$("#performances3").pagingFilter({
+		itemsPerPage : 5
+	});                       
+});
+
+/* -------------------------------------------*/
+$(document).ready(function(){
+	$("#performances4").pagingFilter({
+		itemsPerPage : 5
+	});                       
+});
+
+$('#performances4 div.performance').live('click',function(){
+	theText = escape($(this).html());
+	$('#performances4-media img').attr('src','http://www.dummyimage.com/600x400&text='+theText);
+});
+
+// $("#performances2").live('click',function(){
+// 	console.log('this works');
+// });
+
+</script>
+<style>
+	.pagingFilterUL ul { marging:0; padding:0; clear:both; }
+	.pagingFilterUL li { float:left; padding:3px 7px; border:1px solid #ccc; margin:0 1px; list-style:none; }
+	.pagingFilterUL li.ellipsis { border:none; }
+	.pagingFilterUL li.link-current-page { padding:4px 8px; border:none; }
+	.pagingFilterUL li.link-current-page a { text-decoration:none; }
+</style>
+
+<style>
+	#performances2 { xheight: 200px; }
+	#performances3 div.performance { float: left; padding:5px 7px; border:1px solid #ccc; margin:2px; }
+	#performances4 div.performance { float: left; padding:5px 7px; border:1px solid #ccc; margin:2px; }
+	.clear { clear: both; }
+</style>
+</head>
+<body>
+<div>List 1: performances</div>
+<div class="genre">
+	<a href="all">All</a>
+	<a href=".jazz">Jazz</a>
+	<a href=".world">World</a>
+	<a href=".soul">Soul</a>
+	<a href=".rock">Rock</a>
+	<a href=".pop">Pop</a>
+</div>
+<div id="performances">
+	<div class="performance">Performance 1: </div>
+	<div class="performance rock">Performance 2: rock</div>
+	<div class="performance pop">Performance 3: pop</div>
+	<div class="performance jazz rock">Performance 4: jazz rock</div>
+	<div class="performance jazz pop">Performance 5: jazz pop</div>
+	<div class="performance jazz">Performance 6: jazz</div>
+	<div class="performance jazz rock pop">Performance 7: jazz rock pop</div>
+	<div class="performance world">Performance 8: world</div>
+	<div class="performance world jazz">Performance 9: world jazz</div>
+	<div class="performance world jazz soul">Performance 10: world jazz soul</div>
+	
+	<div class="performance">Performance 11: </div>
+	<div class="performance rock">Performance 12: rock</div>
+	<div class="performance soul">Performance 13: soul</div>
+	<div class="performance soul rock">Performance 14: soul rock</div>
+	<div class="performance jazz soul">Performance 15: jazz soul</div>
+	<div class="performance latin">Performance 16: latin</div>
+	<div class="performance jazz rock pop">Performance 17: jazz rock pop</div>
+	<div class="performance latin">Performance 18: latin</div>
+	<div class="performance latin jazz">Performance 19: latin jazz</div>
+	<div class="performance pop jazz soul">Performance 20: pop jazz soul</div>
+	
+	<div class="performance">Performance 21: </div>
+	<div class="performance latin">Performance 22: latin</div>
+	<div class="performance pop">Performance 23: pop</div>
+	<div class="performance jazz soul latin world rock">Performance 24: jazz soul latin world rock</div>
+	<div class="performance jazz pop">Performance 25: jazz pop</div>
+	<div class="performance jazz">Performance 26: jazz</div>
+	<div class="performance jazz rock pop">Performance 27: jazz rock pop</div>
+	<div class="performance world">Performance 28: world</div>
+	<div class="performance world jazz">Performance 29: world jazz</div>
+	<div class="performance world latin soul">Performance 30: world latin soul</div>
+</div>
+
+<p></p>
+<div>List 2: performances2</div>
+<div class="genre2">
+	<a href="all">All</a>
+	<a href=".jazz">Jazz</a>
+	<a href=".world">World</a>
+	<a href=".soul">Soul</a>
+	<a href=".rock">Rock</a>
+	<a href=".pop">Pop</a>
+	<a href=".jazz.world">Jazz &amp; World</a>
+	<a href=".jazz .world">Jazz or World</a>
+</div>
+<div id="performances2">
+	<div class="performance">Performance 1: </div>
+	<div class="performance rock">Performance 2: rock</div>
+	<div class="performance pop">Performance 3: pop</div>
+	<div class="performance jazz rock">Performance 4: jazz rock</div>
+	<div class="performance jazz pop">Performance 5: jazz pop</div>
+	<div class="performance jazz">Performance 6: jazz</div>
+	<div class="performance jazz rock pop">Performance 7: jazz rock pop</div>
+	<div class="performance world">Performance 8: world</div>
+	<div class="performance world jazz">Performance 9: world jazz</div>
+	<div class="performance world jazz soul">Performance 10: world jazz soul</div>
+
+	<div class="performance">Performance 11: </div>
+	<div class="performance rock">Performance 12: rock</div>
+	<div class="performance soul">Performance 13: soul</div>
+	<div class="performance soul rock">Performance 14: soul rock</div>
+	<div class="performance jazz soul">Performance 15: jazz soul</div>
+	<div class="performance latin">Performance 16: latin</div>
+	<div class="performance jazz rock pop">Performance 17: jazz rock pop</div>
+	<div class="performance latin">Performance 18: latin</div>
+	<div class="performance latin jazz">Performance 19: latin jazz</div>
+	<div class="performance pop jazz soul">Performance 20: pop jazz soul</div>
+
+	<div class="performance">Performance 21: </div>
+	<div class="performance latin">Performance 22: latin</div>
+	<div class="performance pop">Performance 23: pop</div>
+	<div class="performance jazz soul latin world rock">Performance 24: jazz soul latin world rock</div>
+	<div class="performance jazz pop">Performance 25: jazz pop</div>
+	<div class="performance jazz">Performance 26: jazz</div>
+	<div class="performance jazz rock pop">Performance 27: jazz rock pop</div>
+	<div class="performance world">Performance 28: world</div>
+	<div class="performance world jazz">Performance 29: world jazz</div>
+	<div class="performance world latin soul">Performance 30: world latin soul</div>
+</div>
+
+<p></p>
+<div>List 3: performances3</div>
+<div id="performances3">
+	<div class="performance">Performance 1: </div>
+	<div class="performance rock">Performance 2: rock</div>
+	<div class="performance pop">Performance 3: pop</div>
+	<div class="performance jazz rock">Performance 4: jazz rock</div>
+	<div class="performance jazz pop">Performance 5: jazz pop</div>
+	<div class="performance jazz">Performance 6: jazz</div>
+	<div class="performance jazz rock pop">Performance 7: jazz rock pop</div>
+	<div class="performance world">Performance 8: world</div>
+	<div class="performance world jazz">Performance 9: world jazz</div>
+	<div class="performance world jazz soul">Performance 10: world jazz soul</div>
+
+	<div class="performance">Performance 11: </div>
+	<div class="performance rock">Performance 12: rock</div>
+	<div class="performance soul">Performance 13: soul</div>
+	<div class="performance soul rock">Performance 14: soul rock</div>
+	<div class="performance jazz soul">Performance 15: jazz soul</div>
+	<div class="performance latin">Performance 16: latin</div>
+	<div class="performance jazz rock pop">Performance 17: jazz rock pop</div>
+	<div class="performance latin">Performance 18: latin</div>
+	<div class="performance latin jazz">Performance 19: latin jazz</div>
+	<div class="performance pop jazz soul">Performance 20: pop jazz soul</div>
+
+	<div class="performance">Performance 21: </div>
+	<div class="performance latin">Performance 22: latin</div>
+	<div class="performance pop">Performance 23: pop</div>
+	<div class="performance jazz soul latin world rock">Performance 24: jazz soul latin world rock</div>
+	<div class="performance jazz pop">Performance 25: jazz pop</div>
+	<div class="performance jazz">Performance 26: jazz</div>
+	<div class="performance jazz rock pop">Performance 27: jazz rock pop</div>
+	<div class="performance world">Performance 28: world</div>
+	<div class="performance world jazz">Performance 29: world jazz</div>
+	<div class="performance world latin soul">Performance 30: world latin soul</div>
+</div>
+
+<div class="clear"></div>
+<p></p>
+<div>List 4: performances4</div>
+<div id="performances4-media"><img src="http://www.dummyimage.com/600x400" width="600" height="400" /></div>
+<div id="performances4">
+	<div class="performance">Performance 1: </div>
+	<div class="performance rock">Performance 2: rock</div>
+	<div class="performance pop">Performance 3: pop</div>
+	<div class="performance jazz rock">Performance 4: jazz rock</div>
+	<div class="performance jazz pop">Performance 5: jazz pop</div>
+	<div class="performance jazz">Performance 6: jazz</div>
+	<div class="performance jazz rock pop">Performance 7: jazz rock pop</div>
+	<div class="performance world">Performance 8: world</div>
+	<div class="performance world jazz">Performance 9: world jazz</div>
+	<div class="performance world jazz soul">Performance 10: world jazz soul</div>
+
+	<div class="performance">Performance 11: </div>
+	<div class="performance rock">Performance 12: rock</div>
+	<div class="performance soul">Performance 13: soul</div>
+	<div class="performance soul rock">Performance 14: soul rock</div>
+	<div class="performance jazz soul">Performance 15: jazz soul</div>
+	<div class="performance latin">Performance 16: latin</div>
+	<div class="performance jazz rock pop">Performance 17: jazz rock pop</div>
+	<div class="performance latin">Performance 18: latin</div>
+	<div class="performance latin jazz">Performance 19: latin jazz</div>
+	<div class="performance pop jazz soul">Performance 20: pop jazz soul</div>
+
+	<div class="performance">Performance 21: </div>
+	<div class="performance latin">Performance 22: latin</div>
+	<div class="performance pop">Performance 23: pop</div>
+	<div class="performance jazz soul latin world rock">Performance 24: jazz soul latin world rock</div>
+	<div class="performance jazz pop">Performance 25: jazz pop</div>
+	<div class="performance jazz">Performance 26: jazz</div>
+	<div class="performance jazz rock pop">Performance 27: jazz rock pop</div>
+	<div class="performance world">Performance 28: world</div>
+	<div class="performance world jazz">Performance 29: world jazz</div>
+	<div class="performance world latin soul">Performance 30: world latin soul</div>
+</div>
+</html>
